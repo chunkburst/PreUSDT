@@ -1,0 +1,66 @@
+name: Build and Release
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - v*
+permissions:
+  contents: write
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+      - name: Git Fetch Tags
+        run: git fetch --force --tags
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '25'
+      - name: Install pnpm
+        run: npm install -g pnpm@10
+      - name: Install frontend dependencies
+        working-directory: ./web
+        run: pnpm install --frozen-lockfile --shamefully-hoist
+      - name: Build frontend
+        working-directory: ./web
+        run: pnpm run build:prod
+      - name: Move frontend files to static/secure
+        run: |
+          mkdir -p static/secure
+          cp -r web/dist/* static/secure/
+      - name: Generate App Version
+        shell: bash
+        run: |
+          SHORT_SHA="$(git rev-parse --short=7 HEAD)"
+          if [[ "${GITHUB_REF}" == refs/tags/v* ]]; then
+            echo "VERSION_TAG=${GITHUB_REF_NAME}-${SHORT_SHA}" >> "$GITHUB_ENV"
+            echo "GORELEASER_ARGS=release --clean --verbose" >> "$GITHUB_ENV"
+          else
+            echo "VERSION_TAG=snapshot-${SHORT_SHA}" >> "$GITHUB_ENV"
+            echo "GORELEASER_ARGS=release --snapshot --clean --verbose" >> "$GITHUB_ENV"
+          fi
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.26.2'
+      - name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v6
+        with:
+          distribution: goreleaser
+          version: latest
+          args: ${{ env.GORELEASER_ARGS }}
+        env:
+          VERSION: ${{ env.VERSION_TAG }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload snapshot artifacts
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: preusdt-snapshot-${{ github.ref_name }}-${{ github.sha }}
+          path: dist/*
+          if-no-files-found: error

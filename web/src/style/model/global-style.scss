@@ -1,0 +1,55 @@
+/* global style scss */
+@use "@/style/var/index" as *;
+
+.snow-page {
+  box-sizing: border-box;
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background:
+    radial-gradient(circle at 8% 0%, rgba(240, 185, 11, 10%), transparent 24%),
+    linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
+}
+
+.snow-inner {
+  padding: 18px;
+  background: rgba(255, 255, 255, 82%);
+  border: 1px solid rgba(229, 231, 235, 90%);
+  border-radius: 18px;
+  box-shadow: 0 16px 42px rgba(17, 24, 39, 6%);
+}
+
+.snow-fill {
+  height: 100%;
+  padding: 20px;
+  overflow: hidden;
+  background: #f8fafc;
+}
+
+.snow-fill-inner {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 18px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 86%);
+  border: 1px solid rgba(229, 231, 235, 90%);
+  border-radius: 18px;
+}
+
+.snow-fill-pure {
+  height: 100%;
+  overflow: hidden;
+  background: #f8fafc;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arco-card {
+  border-color: rgba(229, 231, 235, 88%);
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(17, 24, 39, 5%);
+}

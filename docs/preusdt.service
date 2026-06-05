@@ -1,0 +1,17 @@
+[Unit]
+Description=PreUSDT Service
+Documentation=https://github.com/chunkburst/PreUSDT
+After=network.target nss-lookup.target
+
+[Service]
+Type = simple
+LimitAS=infinity
+LimitRSS=infinity
+LimitCORE=infinity
+LimitNOFILE=999999
+WorkingDirectory=/var/lib/preusdt
+ExecStart=/usr/local/bin/preusdt start
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
