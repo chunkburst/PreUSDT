@@ -16,7 +16,7 @@
 ### 基础部署命令
 
 ```bash
-docker run -d --restart=unless-stopped -p 8080:8080 chunkburst/preusdt:latest
+docker run -d --restart=unless-stopped -p 8080:8080 autoccb/preusdt:latest
 ```
 
 ### 参数说明
@@ -24,8 +24,8 @@ docker run -d --restart=unless-stopped -p 8080:8080 chunkburst/preusdt:latest
 - **端口映射 `-p 8080:8080`：** 将容器内部的 8080 端口映射到宿主机的 8080 端口，支持通过宿主机 IP 地址访问服务
 - **自动重启 `--restart=unless-stopped`：** 确保容器在异常退出或系统重启后自动恢复运行
 - **镜像版本：**
-    - `chunkburst/preusdt:latest` - 稳定发行版（推荐生产环境使用）
-    - `chunkburst/preusdt:nightly` - 每日构建开发版（包含最新特性，适合测试环境）
+    - `autoccb/preusdt:latest` - 稳定发行版（推荐生产环境使用）
+    - `autoccb/preusdt:nightly` - 每日构建开发版（包含最新特性，适合测试环境）
 
 ## 数据持久化
 
@@ -36,7 +36,7 @@ docker run -d --restart=unless-stopped -p 8080:8080 chunkburst/preusdt:latest
 **重要提示：** 为避免容器删除导致数据丢失，强烈建议将数据目录挂载到宿主机：
 
 ```bash
-docker run -d --restart=unless-stopped -p 8080:8080 -v [挂载路径]:/var/lib/preusdt chunkburst/preusdt:latest
+docker run -d --restart=unless-stopped -p 8080:8080 -v [挂载路径]:/var/lib/preusdt autoccb/preusdt:latest
 ```
 
 **配置示例：**
@@ -44,7 +44,7 @@ docker run -d --restart=unless-stopped -p 8080:8080 -v [挂载路径]:/var/lib/p
 将 `[挂载路径]` 替换为宿主机实际路径，例如：
 
 ```bash
-docker run -d --restart=unless-stopped -p 8080:8080 -v /opt/preusdt:/var/lib/preusdt chunkburst/preusdt:latest
+docker run -d --restart=unless-stopped -p 8080:8080 -v /opt/preusdt:/var/lib/preusdt autoccb/preusdt:latest
 ```
 
 <details>
@@ -65,7 +65,7 @@ docker run -d \
   --restart unless-stopped \
   -p 8080:8080 \
   -e POSTGRESQL_DSN=postgres://user:password@localhost:5432/preusdt?sslmode=disable&connect_timeout=3 \
-  chunkburst/preusdt:latest
+  autoccb/preusdt:latest
 ```
 
 **配置说明：**
@@ -91,7 +91,7 @@ docker run -d \
   --restart unless-stopped \
   -p 8080:8080 \
   -e MYSQL_DSN=user:password@tcp(127.0.0.1:3306)/preusdt?charset=utf8mb4&parseTime=True&loc=Local&timeout=3s&readTimeout=10s&writeTimeout=10s \
-  chunkburst/preusdt:latest
+  autoccb/preusdt:latest
 ```
 
 **配置说明：**

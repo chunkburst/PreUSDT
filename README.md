@@ -28,7 +28,7 @@ PreUSDT 是面向个人和小团队的自托管多链加密货币收款网关，
 Docker 启动后访问 `http://服务器IP:8080`，首次使用请先进入后台完成钱包、交易网络、通知和安全入口配置。
 
 ```bash
-docker run -d --restart=unless-stopped -p 8080:8080 chunkburst/preusdt:latest
+docker run -d --restart=unless-stopped -p 8080:8080 autoccb/preusdt:latest
 ```
 
 如果你使用源码构建，请优先阅读对应部署文档，并确认服务器时间、RPC 节点和回调域名配置正确。

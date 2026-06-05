@@ -13,7 +13,7 @@
 
 ### 2. 插件更新
 
-[下载兼容适配版本](https://raw.githubusercontent.com/chunkburst/preusdt/refs/heads/main/docs/api/acg-faka/Epusdt.zip)
+[下载兼容适配版本](https://raw.githubusercontent.com/chunkburst/PreUSDT/refs/heads/main/docs/api/acg-faka/Epusdt.zip)
 
 **安装步骤：**
 

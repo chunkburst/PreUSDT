@@ -12,7 +12,7 @@ BEpusdt 由独立开发者 [@v03413](https://github.com/v03413) 基于 EPusdt �
 
 ### PreUSDT
 
-PreUSDT 由 AutoCCB 基于 BEpusdt fork 后独立演进，重点补齐多链钱包、多币种收银台、支付方式切换、通知模板、首页模板、后台 UI 与 Docker/GitHub 发布流程等能力。
+PreUSDT 由 ChunkBurst 基于 BEpusdt fork 后独立演进，重点补齐多链钱包、多币种收银台、支付方式切换、通知模板、首页模板、后台 UI 与 Docker/GitHub 发布流程等能力。
 
 ## 项目演进
 
@@ -25,7 +25,7 @@ PreUSDT 由 AutoCCB 基于 BEpusdt fork 后独立演进，重点补齐多链钱�
 
 ## ⚠️ 重要声明
 
-**PreUSDT 与 EPusdt、BEpusdt 均无隶属关系，是由 chunkburst 维护的独立项目。**
+**PreUSDT 与 EPusdt、BEpusdt 均无隶属关系，是由 ChunkBurst 维护的独立项目。**
 
 ## 致谢
 

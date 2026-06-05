@@ -7,7 +7,7 @@ on:
 env:
   APP_NAME: preusdt
   IMAGE_NAME: preusdt
-  DOCKERHUB_REPO: chunkburst/preusdt
+  DOCKERHUB_REPO: autoccb/preusdt
 permissions:
   contents: read
   packages: write
